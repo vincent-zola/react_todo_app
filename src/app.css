@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #1f1f1f;
+  color: white;
+  width: 60%;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+input {
+  background: rgb(208, 137, 137);
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+form button {
+  padding: 0.5rem;
+  border: none;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  box-shadow: 0 0 2px #d08989, 0 0 7px #d08989, 0 0 5px #d08989;
+  color: #d08989;
+}
+
+.todo-container {
+  display: flex;
+  /* flex-direction: column; */
+
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.2rem;
+  padding: 0.3rem;
+  border: 1px solid white;
+  /* width: 40%; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.todo-container button {
+  margin: 0.1;
+  border: none;
+  height: 2rem;
+  width: 2rem;
+  font-weight: bold;
+  color: black;
+  margin-left: 0.1rem;
+  font-size: 1.5rem;
+  
+}
+
+.todo-container h2 {
+  text-align: left;
+  color: #d08989;
+  overflow-wrap: anywhere;
+  flex: 1;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 50%;
+}

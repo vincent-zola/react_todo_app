@@ -7,12 +7,8 @@ const App = () => {
   const [todos, setTodos] = useState([]);
 
   const DeleteTodo = (e) => {
-    const listElement = e.target.parentNode.firstChild.innerText;
-    setTodos(() => {
-      return todos.filter((todo) => {
-        return listElement !== todo.myTodo;
-      });
-    });
+    const listElement = e.target.parentNode;
+    listElement.remove();
   };
 
   const SaveValue = (e) => {
@@ -32,7 +28,7 @@ const App = () => {
         todo.status = !todo.status; // {myTodo: 1, status: true}
       }
     });
-    console.log(todos);
+    console.log(todos)
     setTodos([...todos]);
   };
 

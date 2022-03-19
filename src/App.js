@@ -6,9 +6,12 @@ const App = () => {
 
   const [todos, setTodos] = useState([]);
 
-  const DeleteTodo = (e) => {
-    const listElement = e.target.parentNode;
-    listElement.remove();
+  const DeleteTodo = (id) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => {
+        return todo.id !== id;
+      });
+    });
   };
 
   const SaveValue = (e) => {
@@ -17,7 +20,10 @@ const App = () => {
 
   const CreateTodo = (e) => {
     e.preventDefault();
-    setTodos([...todos, { myTodo: savedValue, status: false }]);
+    setTodos([
+      ...todos,
+      { myTodo: savedValue, status: false, id: Math.random() },
+    ]);
     setSavedValue("");
   };
 
@@ -28,7 +34,6 @@ const App = () => {
         todo.status = !todo.status; // {myTodo: 1, status: true}
       }
     });
-    console.log(todos)
     setTodos([...todos]);
   };
 
@@ -38,12 +43,18 @@ const App = () => {
         <input onChange={SaveValue} type="text" value={savedValue} />
         <button onClick={CreateTodo}>Create Todo</button>
       </form>
-      {todos.map((todo, index) => {
+      {todos.map((todo) => {
         return (
-          <div className="todo-container" key={index}>
+          <div className="todo-container" key={todo.id}>
             <h2 className={todo.status ? "completed" : ""}>{todo.myTodo}</h2>
             <button onClick={CompletedOrNot}>&#10003;</button>
-            <button onClick={DeleteTodo}>X</button>
+            <button
+              onClick={() => {
+                DeleteTodo(todo.id);
+              }}
+            >
+              X
+            </button>
           </div>
         );
       })}
